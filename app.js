@@ -12,6 +12,7 @@ var Schedule = require('./models/schedule');
 var Availability = require('./models/availability');
 var Candidate = require('./models/candidate');
 var Comment = require('./models/comment');
+
 User.sync().then(() => {
   Schedule.belongsTo(User, { foreignKey: 'createdBy' });
   Schedule.sync();
@@ -61,6 +62,7 @@ var logoutRouter = require('./routes/logout');
 var schedulesRouter = require('./routes/schedules');
 var availabilitiesRouter = require('./routes/availabilities');
 var commentsRouter = require('./routes/comments');
+//var commentsDelteRouter = require('./routes/comment-delete');
 
 var app = express();
 app.use(helmet());
@@ -85,6 +87,8 @@ app.use('/logout', logoutRouter);
 app.use('/schedules', schedulesRouter);
 app.use('/schedules', availabilitiesRouter);
 app.use('/schedules', commentsRouter);
+//コメント削除用に追加
+//app.use('/schedules', commentsDelteRouter);
 
 app.get('/auth/github',
   passport.authenticate('github', { scope: ['user:email'] }),
