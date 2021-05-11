@@ -18,8 +18,9 @@ const Comment = loader.database.define('comments', {
     allowNull: false
   },
   commentId: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.BIGINT,
     primaryKey: true,
+    //autoIncrement: true
     allowNull: false
   }
 }, {

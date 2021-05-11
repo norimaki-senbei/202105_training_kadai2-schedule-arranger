@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const authenticationEnsurer = require('./authentication-ensurer');
 const Comment = require('../models/comment');
+const uuid = require('uuid');
 
 router.get('/:scheduleId/users/:userId/comments', authenticationEnsurer, (req, res, next) => {
   if (parseInt(req.query.delete) === 1){
@@ -26,8 +27,10 @@ router.post('/:scheduleId/users/:userId/comments', authenticationEnsurer, (req, 
   const scheduleId = req.params.scheduleId;
   const userId = req.params.userId;
   const comment = req.body.comment;
-  const commentId = 1000;//とりあえず任意の値をコメントIDとして使用//TODOコメントIDをつける
-  //const scheduleId = uuid.v4();
+  //const commentId = 1000;//とりあえず任意の値をコメントIDとして使用
+  //TODOコメントIDをランダムで付与できるようにする
+  //const commentId = Math.floor(Math.random() * 50000);
+  const commentId = Date.now();
   
   Comment.upsert({
     scheduleId: scheduleId,
