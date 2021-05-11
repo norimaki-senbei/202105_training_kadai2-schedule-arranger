@@ -8,7 +8,7 @@ router.post('/:scheduleId/users/:userId/comments', authenticationEnsurer, (req, 
   const scheduleId = req.params.scheduleId;
   const userId = req.params.userId;
   const comment = req.body.comment;
-  const commentId = 1000;//とりあえず任意の値をコメントIDとして使用
+  const commentId = 1000;//とりあえず任意の値をコメントIDとして使用//TODOコメントIDをつける
   //const scheduleId = uuid.v4();
 
   Comment.upsert({
