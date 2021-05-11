@@ -6,7 +6,19 @@ const Comment = require('../models/comment');
 
 router.get('/:scheduleId/users/:userId/comments', authenticationEnsurer, (req, res, next) => {
   if (parseInt(req.query.delete) === 1){
-    console.log("hogehogehagehage");
+    //スケジュールIDとユーザーIDの取得
+    const scheduleId = req.params.scheduleId;
+    const userId = req.params.userId;
+    //データベースから削除する機能
+    Comment.destroy({
+      where:{
+        scheduleId: scheduleId,
+        userId: userId
+      }
+    }).then( () => {
+      //リダイレクト
+      res.redirect('/');
+    })
   }
 });
 
