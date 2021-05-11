@@ -14,7 +14,7 @@ router.get('/new', authenticationEnsurer, (req, res, next) => {
 });
 
 router.post('/', authenticationEnsurer, (req, res, next) => {
-  const scheduleId = uuid.v4();
+  const scheduleId = uuid.v4();//scheduleIdの生成
   const updatedAt = new Date();
   Schedule.create({
     scheduleId: scheduleId,

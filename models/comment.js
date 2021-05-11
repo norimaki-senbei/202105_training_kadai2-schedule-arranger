@@ -16,6 +16,11 @@ const Comment = loader.database.define('comments', {
   comment: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  commentId: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    allowNull: false
   }
 }, {
     freezeTableName: true,
